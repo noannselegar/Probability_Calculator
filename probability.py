@@ -7,17 +7,12 @@ class Hat():
         self.contents = [k for k, v in self.kwargs.items() for i in range(v)]
 
     def draw(self, balls):
-        randomBalls = list()
-        contents = list(self.contents)
-        if balls < len(contents):
-            for _ in range(balls):
-                r = random.randint(-len(contents), 0)
-                randomBalls.append(contents.pop(r))
-            return randomBalls
+        if balls < len(self.contents):  
+            return random.sample(self.contents, balls)
         else:
             return self.contents
 
-def experiment(hat=Hat(), expected_balls={}, num_balls_drawn=0, num_experiments=2000):
+def experiment(hat=Hat(), expected_balls={}, num_balls_drawn=0, num_experiments=10000):
     z = 0
     for x in range(num_experiments):
         A = hat.draw(num_balls_drawn)
