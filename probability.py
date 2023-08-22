@@ -1,9 +1,7 @@
 import random
-import copy
 
 class Hat():
     def __init__(self, **kwargs):
-        self.kwargs = kwargs
         self.contents = [k for k, v in self.kwargs.items() for i in range(v)]
 
     def draw(self, balls):
